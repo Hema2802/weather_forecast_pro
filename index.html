@@ -12,9 +12,62 @@
 </head>
 <body>
     <!-- first div container -->
-    <div class="h-screen w-screen bg-sky-900 grid grid-cols-[18rem,1fr] gap-4">
-        <div class="bg-sky-200 h-full">logo</div>
-        <div class="bg-sky-300">header</div>
+    <div class="h-screen w-screen bg-sky-900 grid grid-cols-[18rem,1fr] gap-6">
+        
+        <div class="bg-sky-800 h-full  flex justify-center items-center flex-col gap-5">
+            <!-- logo fixing -->
+            <img class="rounded animate-zoom" style="width: 230px; height: 230px;" src="weather_app.png" alt="weather image" title="weather_condition">
+
+            <!-- navbar items -->
+             <div class="flex flex-col gap-5 justify-center items-center text-sky-900 text-xl font-bold">
+                <a class="hover:text-red-600 bg-sky-100 p-1 px-3 rounded-2xl transform transition-transform duration-300 hover:translate-x-5" href="#"> <i class="fa-solid fa-cloud" style="color: #14346a;"></i> DashBoard </a> <!--navbar item1-->
+                
+                <a class="hover:text-red-600 bg-sky-100 p-1 px-3 rounded-2xl transform transition-transform duration-300 hover:translate-x-5" href="#"><i class="fa-solid fa-location-crosshairs" style="color: #14346a;"></i> Today Highlights</a> <!--navbar item2-->
+                
+                <a class="hover:text-red-600 bg-sky-100 p-1 px-3 rounded-2xl transform transition-transform duration-300 hover:translate-x-5" href="#"><i class="fa-solid fa-map" style="color: #14346a;"></i> Week Report</a> <!--navbar item3-->
+                
+                <a class="hover:text-red-600 bg-sky-100 p-1 px-3 rounded-2xl transform transition-transform duration-300 hover:translate-x-5" href="#"><i class="fa-solid fa-calendar-days" style="color: #14346a;"></i> Calender</a> <!--navbar item4-->
+             </div>
+        </div>
+        <!-- second coloumn of first container -->
+        <div class="bg-sky-900 h-full mr-2 grid grid-cols-2 grid-rows-[8rem,1fr]">
+            <div class="col-span-3"> 
+                <!-- Header of the project -->
+                 <h1 class="text-center pt-4 text-5xl font-bold text-sky-100">----Meteorological Forecast----</h1>
+            </div>
+            
+            <div class="-mr-24 bg-sky-800 rounded-lg flex justify-center items-center flex-col gap-7">
+                <h2 class="font-body text-lg md:text-xl font-semibold text-sky-100">Enter a City Name</h2>
+                <!-- input field and temperature converter -->
+                 <div>
+                    <input class="w-full md:w-96 p-3 rounded-lg" type="text" id="userLocation" placeholder="Eg.Mumbai"> &nbsp;&nbsp;&nbsp;
+                <select id="converter" class="p-3 w-24 rounded-lg bg-sky-500">
+                    <option>°C</option>
+                    <option>°F</option>
+                </select>
+                 </div>
+
+                 <select id="recent-cities" class="p-2 text-blue-900 w-full md:w-1/2 bg-sky-100 rounded-lg">
+                    <option value="">Recent Search </option>
+                </select>
+
+                <button id="search_butt" class="bg-gray-400 p-2 w-full md:w-96 font-body text-lg text-sky-900 active:bg-green-700 font-bold active:text-sky-50">Search <i class="fas fa-search" style="color: #183568;"></i></button>
+
+                <p class="text-sky-50">-----------------------------------Or--------------------------------------</p>
+                
+                <button class="bg-gray-400 p-2 w-full md:w-96 font-body text-base text-sky-900 font-bold active:bg-green-700 active:text-sky-50" id="current_button">Use current Location <i class="fa-solid fa-map-pin" style="color: #32548f;"></i></button>
+            </div>
+
+            <div class="flex justify-center items-center flex-col gap-8">
+               <img class="w-56 h-56 pl-8" src="compass.gif" alt="direction_compass" title="compass_gif">
+
+               <div>
+                <h2 class="text-center text-sky-50 pl-3">No matter the weather,<br> every location has its season of beauty.</h2>
+               </div>
+               
+            </div>
+            
+        </div>
 
     </div>
 
