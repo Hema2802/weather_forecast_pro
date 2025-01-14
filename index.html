@@ -12,7 +12,7 @@
 </head>
 <body>
     <!-- first div container -->
-    <div class="h-screen w-screen bg-sky-900 grid grid-cols-[18rem,1fr] gap-6 font-body">
+    <div class="h-screen w-screen bg-sky-900 grid grid-cols-[18rem,1fr] gap-6 font-body sm:w-screen flex-wrap">
         
         <div class="bg-sky-800 h-full  flex justify-center items-center flex-col gap-5">
             <!-- logo fixing -->
@@ -154,12 +154,28 @@
    
    <!-- 3rd container- gif attachment-climate varities -->
 
-   <div class="h-96 w-screen bg-sky-300">
-    <div class="flex flex-row gap-5">
-           <div></div> <!--sunny weather-->
-           <div></div> <!--Rainy weather-->
-           <div></div> <!--Cloudy weather-->
-           <div></div> <!--windy weather-->
+   <div class="h-96 w-screen bg-sky-900">
+    <div class="flex flex-row gap-10 justify-center items-center">
+           
+          <div class="flex justify-center items-center flex-col transform  hover:scale-110">
+            <img style="border-radius:50% ; border: 3px solid rgb(67, 67, 183);" class="w-60 h-60 bg-sky-500" src="sunny.gif" alt="sunny-weather" title="sunny_gif">
+            <h1 class="text-2xl font-bold text-sky-100">Sunny</h1>
+           </div> <!--sunny weather-->
+           
+           <div class="flex justify-center items-center flex-col transform  hover:scale-110">
+            <img style="border-radius:50% ; border: 3px solid rgb(65, 65, 181);" class="w-60 h-60" src="rainny.gif" alt="rainy_weather" title="rainy_gif">
+            <h1 class="text-2xl font-bold text-sky-100">Rainy</h1>
+           </div> <!--Rainy weather-->
+           
+           <div class="flex justify-center items-center flex-col transform  hover:scale-110">
+            <img style="border-radius:50% ; border: 3px solid rgb(72, 72, 160);" class="w-60 h-60" src="cloudy.gif" alt="cloudy_weather" title="cloudy_gif">
+            <h1 class="text-2xl font-bold text-sky-100">Cloudy</h1>
+           </div> <!--Cloudy weather-->
+           
+           <div class="flex justify-center items-center flex-col transform  hover:scale-110">
+            <img style="border-radius:50% ; border: 3px solid rgb(66, 66, 150);" class="w-60 h-60 bg-sky-600" src="windy.gif" alt="wind_weather" title="windy_weather">
+            <h1 class="text-2xl font-bold text-sky-100">Windy/Stromy</h1>
+           </div> <!--windy weather-->
     </div>
 
    </div>
