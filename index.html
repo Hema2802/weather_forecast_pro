@@ -10,9 +10,24 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
 
 </head>
-<body>
+<body class="w-screen h-screen">
     <!-- first div container -->
-    <div class="w-full h-full bg-sky-900">
+    <div class="w-full h-full bg-sky-900 grid grid-cols-[18rem,1fr] gap-8">
+        <!-- first column -->
+         <div class="bg-sky-800 h-full w-full flex flex-col justify-center items-center gap-6">
+            <img class="w-36 h-36 rounded-full" src="weather_app.png" alt="weatherLogo" title="Weather app"><!--weather logo attached-->
+        <!-- navbar creating -->
+        <div class="flex flex-col justify-center items-center gap-4 font-body font-bold text-sky-900 text-lg">
+                
+            <a class="hover:text-red-600 bg-sky-100 p-1 px-3 rounded-2xl transform transition-transform duration-300 hover:translate-x-5" href="#head_med"><i class="fa-solid fa-cloud" style="color: #14346a;"></i>&nbsp;&nbsp;&nbsp;DashBoard</a><!--Dash board navbar item1-->
+            
+            <a class="hover:text-red-600 bg-sky-100 p-1 px-3 rounded-2xl transform transition-transform duration-300 hover:translate-x-5" href="#today_high"><i class="fa-solid fa-location-crosshairs" style="color: #14346a;"></i>&nbsp;&nbsp;&nbsp;Today Highlights</a> <!--nav bar item2-->
+            
+            <a class="hover:text-red-600 bg-sky-100 p-1 px-3 rounded-2xl transform transition-transform duration-300 hover:translate-x-5" href="#week_data"><i class="fa-solid fa-map" style="color: #14346a;"></i>&nbsp;&nbsp;&nbsp;Week Analysis</a><!--navbar item3-->
+            
+            <a class="hover:text-red-600 bg-sky-100 p-1 px-3 rounded-2xl transform transition-transform duration-300 hover:translate-x-5" href="#calen_acc"><i class="fa-solid fa-calendar-days" style="color: #14346a;"></i>&nbsp;&nbsp;&nbsp;Calender</a> <!--navbar item4-->
+        </div>
+         </div>
 
     </div>
 
