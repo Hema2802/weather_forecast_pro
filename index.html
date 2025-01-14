@@ -12,7 +12,7 @@
 </head>
 <body>
     <!-- first div container -->
-    <div class="h-screen w-screen bg-sky-900 grid grid-cols-[18rem,1fr] gap-6 font-body sm:w-screen flex-wrap">
+    <div class="h-screen w-screen bg-sky-900 grid grid-cols-[18rem,1fr] gap-6 font-body">
         
         <div class="bg-sky-800 h-full  flex justify-center items-center flex-col gap-5">
             <!-- logo fixing -->
@@ -179,6 +179,78 @@
     </div>
 
    </div>
+
+   <!-- container 4 weekly data -->
+    <div class="w-screen h-screen bg-sky-700 font-body">
+        <h1 class="text-center text-3xl font-bold text-sky-100">Weekly Data...</h1>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 grid-rows-2 gap-4 md:gap-5 px-10 md:px-16 h-96 font-bold" id="Forecast">
+            <!-- data will come dynamically -->
+        </div>
+
+    </div>
+
+    <!-- calender analysis -->
     
+        <div class="bg-sky-900 h-screen w-screen flex justify-center flex-col items-center -mt-20">
+            <h1 class="text-center font-body text-2xl md:text-3xl pt-10 pb-10 font-bold text-sky-50" id="calen_acc">Calender Accessbility</h1>
+            <div class="flex flex-col md:flex-row justify-center items-center gap-4 md:gap-10">
+            <div>
+                <img class="h-48 md:h-64" src="climate.gif" alt="climate image" style="width: 280px; height: 290px; border-radius: 10px;">
+             </div>
+            
+             <div class="w-full md:w-96 h-80 md:h-96 bg-sky-800 flex justify-center transform hover:scale-110">
+    
+                <div class="calendar w-full max-w-md mx-auto bg-white shadow-md rounded-lg overflow-hidden">
+                    <header class="flex items-center justify-between bg-sky-300 text-white p-4">
+                      <h3 class="text-sm md:text-lg font-semibold text-sky-900">January 2025</h3>
+                      <nav class="flex gap-2">
+                        <button id="prev" class="bg-blue-900 hover:bg-blue-600 px-2 md:px-3 py-1 rounded">&larr;</button>
+                        <button id="next" class="bg-blue-900 hover:bg-blue-600 px-2 md:px-3 py-1 rounded">&rarr;</button>
+                      </nav>
+                    </header>
+                    <section class="p-4">
+                      <ul class="days grid grid-cols-7 text-center text-gray-600 font-medium mb-2">
+                        <li>Sun</li>
+                        <li>Mon</li>
+                        <li>Tue</li>
+                        <li>Wed</li>
+                        <li>Thu</li>
+                        <li>Fri</li>
+                        <li>Sat</li>
+                      </ul>
+                      <ul class="dates grid grid-cols-7 gap-1 md:gap-2 text-center">
+                        <!-- Example dates for layout purposes -->
+                        <li class="p-1 md:p-2 bg-gray-100 rounded hover:bg-blue-100">1</li>
+                        <li class="p-1 md:p-2 bg-gray-100 rounded hover:bg-blue-100">2</li>
+                        <li class="p-1 md:p-2 bg-gray-100 rounded hover:bg-blue-100">3</li>
+                        <li class="p-1 md:p-2 bg-gray-100 rounded hover:bg-blue-100">4</li>
+                        <li class="p-1 md:p-2 bg-gray-100 rounded hover:bg-blue-100">5</li>
+                        <li class="p-1 md:p-2 bg-gray-100 rounded hover:bg-blue-100">6</li>
+                        <li class="p-1 md:p-2 bg-gray-100 rounded hover:bg-blue-100">7</li>
+                      </ul>
+                    </section>
+                  </div>
+                </div>
+
+                <div>
+                    <img class="rounded-lg h-72 w-72" src="reporter.gif" alt="weather_report" title="weather_news">
+                </div>
+    
+          </div>
+
+    </div>
+
+    <!-- final div -->
+     <div class="w-screen h-24 bg-sky-800">
+        <footer>
+            <p class="text-center pt-6"><i class="fa-solid fa-envelope" style="color: #e5ebf5;"></i> themalatha2810@gmail.com</p>
+            <p class="text-center">© 2025 Hemalatha_Thangavel_FSD_Internshala. All rights reserved.</p>
+        </footer>
+
+     </div>
+
+     <!-- linking js file -->
+     <script src="index.js"></script>
 </body>
 </html>
