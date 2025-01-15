@@ -635,8 +635,8 @@ video {
   display: grid;
 }
 
-.h-16{
-  height: 4rem;
+.h-24{
+  height: 6rem;
 }
 
 .h-28{
@@ -677,14 +677,6 @@ video {
 
 .h-screen{
   height: 100vh;
-}
-
-.h-2{
-  height: 0.5rem;
-}
-
-.h-24{
-  height: 6rem;
 }
 
 .w-24{
@@ -901,6 +893,10 @@ video {
   background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1));
 }
 
+.bg-beach-sea{
+  background-image: url('/weather_forecast_pro/beach-sea.jpg');
+}
+
 .bg-cover{
   background-size: cover;
 }
@@ -978,16 +974,8 @@ video {
   padding-top: 2.5rem;
 }
 
-.pt-11{
-  padding-top: 2.75rem;
-}
-
 .pt-4{
   padding-top: 1rem;
-}
-
-.pt-8{
-  padding-top: 2rem;
 }
 
 .pt-6{
