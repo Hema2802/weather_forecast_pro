@@ -168,6 +168,50 @@ function temConverter(temp){  //temperature converter
 }
 
 
+
+//select dropdown recently given
+
+const userLocationInput = document.getElementById("userLocation");
+const recentCitiesDropdown = document.getElementById("recent-cities");
+const searchButton = document.getElementById("search_butt");
+
+// Function to add recent input to dropdown
+searchButton.addEventListener("click", () => {
+    const cityName = userLocationInput.value.trim();
+
+    if (cityName) {
+        // Check if the city is already in the dropdown
+        let cityExists = false;
+        for (const option of recentCitiesDropdown.options) {
+            if (option.value === cityName) {
+                cityExists = true;
+                break;
+            }
+        }
+
+        // If city is not already in the dropdown, add it
+        if (!cityExists) {
+            const newOption = document.createElement("option");
+            newOption.value = cityName;
+            newOption.textContent = cityName;
+            recentCitiesDropdown.appendChild(newOption);
+        }
+
+        // Clear the input box
+        userLocationInput.value = "";
+    }
+});
+
+// Function to update the input box when a city is selected
+recentCitiesDropdown.addEventListener("change", () => {
+    const selectedCity = recentCitiesDropdown.value;
+    if (selectedCity) {
+        userLocationInput.value = selectedCity;
+    }
+});
+
+
+    
 // calender accessbility
 const header = document.querySelector(".calendar h3");
 const dates = document.querySelector(".dates");
