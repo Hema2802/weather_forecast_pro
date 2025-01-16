@@ -28,6 +28,8 @@ WEATHER_DATA_ENDPOINT=`https://api.openweathermap.org/data/3.0/onecall?exclude=m
 
 // events to button
  function findUserLocation(){
+    Forecast.innerHTML="";
+
     fetch(WEATHER_API_ENDPOINT+ userLocation.value) // to get user input value
        .then((response)=>{
         if (!response.ok) {
@@ -105,7 +107,27 @@ WEATHER_DATA_ENDPOINT=`https://api.openweathermap.org/data/3.0/onecall?exclude=m
                     UVValue.innerHTML=data.current.uvi;
                     PValue.innerHTML=data.current.pressure+`<span>hPa</span>`;
                    
-                    
+                    console.log(data.daily);  //to forecast the week daily data
+
+                    data.daily.forEach((weather)=>{
+                        let div=document.createElement("div");
+                           const options={
+                            weekday:'long',
+                            month:'long',
+                            day:"numeric"
+                           }
+                        div.innerHTML=getLongFormatDateTime(weather.dt,0,options);
+
+                        div.innerHTML+= `<img src="https://openweathermap.org/img/wn/${weather.weather[0].icon}10d@2x.png"/>`;
+                        
+                        div.innerHTML+=`<p class="forecast-desc">${weather.weather[0].description}</p>`;
+
+
+                        
+                        Forecast.append(div);
+                        
+                        });
+
 
 
                 })
@@ -126,4 +148,17 @@ function formatUnixTime(dtValue,offSet,options={}){ // to analyze the sunset and
 
 function getLongFormatDateTime(dtValue,offSet,options){
     return formatUnixTime(dtValue,offSet,options)
+}
+
+function temConverter(temp){  //temperature converter
+    let tempValue=Math.round(temp);
+    let message="";
+    if(converter.value=="°C"){
+        message=tempValue+"<span>"+"\xB0C</span>";
+    }
+    else{
+        let ctof=(temperature*9)/5+32;
+        message=tempValue+"<span>"+"\xB0F</span>";
+    }
+    return message;
 }
