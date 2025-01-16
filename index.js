@@ -61,7 +61,9 @@ WEATHER_DATA_ENDPOINT=`https://api.openweathermap.org/data/3.0/onecall?exclude=m
                 })
                 .then((data)=>{
                     console.log(data);
-                    temperature.innerHTML=data.current.temp; // temperature visibility
+                    temperature.innerHTML=temConverter(data.current.temp);
+
+                    // temperature.innerHTML=data.current.temp; // temperature visibility
                     feelsLike.innerHTML="Feels like : "+ data.current.feels_like; //feelslike visibility
                     description.innerHTML=`<i class="fa-brands fa-cloudversify fa-2xl" style="color: #354f7e;"></i> &nbsp;`+ data.current.weather[0].description; //weather description visibility
                     
@@ -111,6 +113,7 @@ WEATHER_DATA_ENDPOINT=`https://api.openweathermap.org/data/3.0/onecall?exclude=m
 
                     data.daily.forEach((weather)=>{
                         let div=document.createElement("div");
+                        div.className = "bg-sky-50 flex flex-col justify-center items-center rounded-md text-sky-900 p-4";
                            const options={
                             weekday:'long',
                             month:'long',
@@ -118,10 +121,11 @@ WEATHER_DATA_ENDPOINT=`https://api.openweathermap.org/data/3.0/onecall?exclude=m
                            }
                         div.innerHTML=getLongFormatDateTime(weather.dt,0,options);
 
-                        div.innerHTML+= `<img src="https://openweathermap.org/img/wn/${weather.weather[0].icon}10d@2x.png"/>`;
+                        div.innerHTML+= `<img src="https://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png"/>`;
                         
                         div.innerHTML+=`<p class="forecast-desc">${weather.weather[0].description}</p>`;
-
+ 
+                        div.innerHTML+=`<span><span>Min: ${temConverter(weather.temp.min)}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>Max: ${temConverter(weather.temp.max)}</span></span>`;
 
                         
                         Forecast.append(div);
@@ -147,7 +151,7 @@ function formatUnixTime(dtValue,offSet,options={}){ // to analyze the sunset and
 }
 
 function getLongFormatDateTime(dtValue,offSet,options){
-    return formatUnixTime(dtValue,offSet,options)
+    return formatUnixTime(dtValue,offSet,options);
 }
 
 function temConverter(temp){  //temperature converter
@@ -162,3 +166,86 @@ function temConverter(temp){  //temperature converter
     }
     return message;
 }
+
+
+// calender accessbility
+const header = document.querySelector(".calendar h3");
+const dates = document.querySelector(".dates");
+const navs = document.querySelectorAll("#prev, #next");
+
+const months = [ // array of months
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
+];
+
+let dated = new Date();
+let month = dated.getMonth();
+let year = dated.getFullYear();
+
+function renderCalendar() {
+  // first day of the month
+  const start = new Date(year, month, 1).getDay();
+  // last date of the month
+  const endDate = new Date(year, month + 1, 0).getDate();
+  // last day of the month
+  const end = new Date(year, month, endDate).getDay();
+  // last date of the previous month
+  const endDatePrev = new Date(year, month, 0).getDate();
+
+  let datesHtml = "";
+
+  for (let i = start; i > 0; i--) {
+    datesHtml += `<li class="inactive">${endDatePrev - i + 1}</li>`;
+  }
+
+  for (let i = 1; i <= endDate; i++) {
+    let className =
+      i === dated.getDate() &&
+      month === new Date().getMonth() &&
+      year === new Date().getFullYear()
+        ? ' class="today"'
+        : "";
+    datesHtml += `<li${className}>${i}</li>`;
+  }
+
+  for (let i = end; i < 6; i++) {
+    datesHtml += `<li class="inactive">${i - end + 1}</li>`;
+  }
+
+  dates.innerHTML = datesHtml;
+  header.textContent = `${months[month]} ${year}`;
+}
+
+navs.forEach((nav) => {
+  nav.addEventListener("click", (e) => {
+    const btnId = e.target.id;
+
+    if (btnId === "prev" && month === 0) {
+      year--;
+      month = 11;
+    } else if (btnId === "next" && month === 11) {
+      year++;
+      month = 0;
+    } else {
+      month = btnId === "next" ? month + 1 : month - 1;
+    }
+
+    dated = new Date(year, month, new Date().getDate());
+    year = dated.getFullYear();
+    month = dated.getMonth();
+
+    renderCalendar();
+	 });
+});
+
+renderCalendar();
