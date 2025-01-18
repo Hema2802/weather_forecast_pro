@@ -114,14 +114,16 @@ WEATHER_DATA_ENDPOINT=`https://api.openweathermap.org/data/3.0/onecall?exclude=m
                     data.daily.forEach((weather)=>{
                         let div=document.createElement("div");
                         div.className = "bg-sky-50 flex flex-col justify-center items-center rounded-md text-sky-900 p-4";
-                           const options={
+                        
+                        const options={
                             weekday:'long',
                             month:'long',
                             day:"numeric"
                            }
                         div.innerHTML=getLongFormatDateTime(weather.dt,0,options);
 
-                        div.innerHTML+= `<img src="https://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png"/>`;
+                        div.innerHTML+= `<img src="https://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png" 
+                         class="bg-blue-600 rounded-full"/>`;
                         
                         div.innerHTML+=`<p class="forecast-desc">${weather.weather[0].description}</p>`;
  
@@ -202,6 +204,8 @@ searchButton.addEventListener("click", () => {
     }
 });
 
+
+
 // Function to update the input box when a city is selected
 recentCitiesDropdown.addEventListener("change", () => {
     const selectedCity = recentCitiesDropdown.value;
@@ -211,6 +215,57 @@ recentCitiesDropdown.addEventListener("change", () => {
 });
 
 
+    
+
+    
+        
+        const current_button = document.getElementById('current_button');
+        const apiKey = 'f3468552b34e995e5f4b888bce694975';
+
+        current_button.addEventListener('click', () => {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
+            } else {
+                alert('Geolocation is not supported by your browser.');
+            }
+        });
+
+        function successCallback(position) {
+            const { latitude, longitude } = position.coords;
+
+            // Call the OpenWeatherMap API to get location details
+            fetch(`http://api.openweathermap.org/geo/1.0/reverse?lat=${latitude}&lon=${longitude}&limit=1&appid=f3468552b34e995e5f4b888bce694975`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.length > 0) {
+                        const locationName = data[0].name; // Get the city name
+                        locationInput.value = locationName; // Set it in the input box
+                    } else {
+                        alert('Unable to fetch location details.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error fetching location:', error);
+                    alert('An error occurred while fetching location details.');
+                });
+        }
+
+        function errorCallback(error) {
+            switch (error.code) {
+                case error.PERMISSION_DENIED:
+                    alert('User denied the request for Geolocation.');
+                    break;
+                case error.POSITION_UNAVAILABLE:
+                    alert('Location information is unavailable.');
+                    break;
+                case error.TIMEOUT:
+                    alert('The request to get user location timed out.');
+                    break;
+                case error.UNKNOWN_ERROR:
+                    alert('An unknown error occurred.');
+                    break;
+            }
+        }
     
 // calender accessbility
 const header = document.querySelector(".calendar h3");
