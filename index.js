@@ -123,7 +123,7 @@ WEATHER_DATA_ENDPOINT=`https://api.openweathermap.org/data/3.0/onecall?exclude=m
                         div.innerHTML=getLongFormatDateTime(weather.dt,0,options);
 
                         div.innerHTML+= `<img src="https://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png" 
-                         class="bg-blue-600 rounded-full"/>`;
+                        class="bg-blue-600 rounded-full"/>`;
                         
                         div.innerHTML+=`<p class="forecast-desc">${weather.weather[0].description}</p>`;
  
